@@ -1,0 +1,32 @@
+{
+  "name": "mcpl-client",
+  "version": "0.1.0",
+  "description": "MCP-L: Model Context Protocol - Listening Layer JavaScript client library",
+  "main": "mcpl-client.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AINative-Studio/mcp-l-core.git"
+  },
+  "keywords": [
+    "mcp",
+    "ai",
+    "sentiment",
+    "context",
+    "anthropic"
+  ],
+  "author": "AINative Studio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AINative-Studio/mcp-l-core/issues"
+  },
+  "homepage": "https://github.com/AINative-Studio/mcp-l-core#readme",
+  "dependencies": {
+    "ajv": "^8.12.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

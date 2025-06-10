@@ -1,0 +1,33 @@
+{
+  "behavior_tags": {
+    "sentiment": {
+      "detected": "frustrated",
+      "confidence": 0.85
+    },
+    "mirror_intent": {
+      "mirrored_text": "I understand you want to refactor this code to make it more maintainable without changing functionality.",
+      "confidence": 0.92
+    },
+    "clarify_before_execute": {
+      "required": true,
+      "clarification_prompt": "Would you like me to refactor all files or just the core components?",
+      "options": ["All files", "Core components only", "Let's discuss further"]
+    },
+    "follow_up_required": {
+      "required": true,
+      "follow_up_items": [
+        "Verify code still passes all tests",
+        "Check if documentation needs updating"
+      ]
+    },
+    "suggested_tone": {
+      "tone": "empathetic",
+      "explanation": "User seems frustrated with the current codebase"
+    }
+  },
+  "sscs_compliance": {
+    "story_type": "feature",
+    "tdd_phase": "refactor",
+    "workflow_step": "Refactor complete"
+  }
+}

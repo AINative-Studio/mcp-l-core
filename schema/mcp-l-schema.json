@@ -1,0 +1,148 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ainative.studio/schemas/mcp-l/schema.json",
+  "title": "MCP-L Schema",
+  "description": "Schema for Model Context Protocol Listening Layer (MCP-L) messages",
+  "version": "0.1.0",
+  "type": "object",
+  "required": ["behavior_tags"],
+  "properties": {
+    "behavior_tags": {
+      "type": "object",
+      "description": "Collection of behavioral tags to enhance AI agent responses",
+      "properties": {
+        "sentiment": {
+          "type": "object",
+          "description": "Sentiment analysis of user's message",
+          "required": ["detected"],
+          "properties": {
+            "detected": {
+              "type": "string",
+              "description": "The detected sentiment in the user's message",
+              "enum": ["neutral", "frustrated", "excited", "positive", "negative", "confused", "urgent", "relaxed"]
+            },
+            "confidence": {
+              "type": "number",
+              "description": "Confidence score of the sentiment detection",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "details": {
+              "type": "object",
+              "description": "Additional details about the sentiment analysis",
+              "additionalProperties": true
+            }
+          }
+        },
+        "mirror_intent": {
+          "type": "object",
+          "description": "Mirroring of user's intent for validation",
+          "required": ["mirrored_text"],
+          "properties": {
+            "mirrored_text": {
+              "type": "string",
+              "description": "A rephrasing of the user's intent to confirm understanding"
+            },
+            "confidence": {
+              "type": "number",
+              "description": "Confidence score of the intent mirroring",
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        },
+        "clarify_before_execute": {
+          "type": "object",
+          "description": "Indication that clarification is needed before execution",
+          "required": ["required"],
+          "properties": {
+            "required": {
+              "type": "boolean",
+              "description": "Whether clarification is required before executing"
+            },
+            "clarification_prompt": {
+              "type": "string",
+              "description": "The prompt to ask the user for clarification"
+            },
+            "options": {
+              "type": "array",
+              "description": "Possible options to present to the user",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "follow_up_required": {
+          "type": "object",
+          "description": "Indication that follow-up is required after execution",
+          "required": ["required"],
+          "properties": {
+            "required": {
+              "type": "boolean",
+              "description": "Whether follow-up is required"
+            },
+            "follow_up_items": {
+              "type": "array",
+              "description": "List of follow-up items or questions",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "suggested_tone": {
+          "type": "object",
+          "description": "Suggested tone for the agent to respond with",
+          "required": ["tone"],
+          "properties": {
+            "tone": {
+              "type": "string",
+              "description": "The suggested tone for response",
+              "enum": ["neutral", "empathetic", "technical", "encouraging", "concise", "detailed", "cautious", "confident"]
+            },
+            "explanation": {
+              "type": "string",
+              "description": "Explanation for why this tone is suggested"
+            }
+          }
+        },
+        "agent_feedback": {
+          "type": "object",
+          "description": "Feedback from the agent about the interaction",
+          "properties": {
+            "context_update": {
+              "type": "string",
+              "description": "Updates to maintain in context for future interactions"
+            },
+            "user_preferences": {
+              "type": "object",
+              "description": "Learned preferences of the user",
+              "additionalProperties": true
+            }
+          }
+        }
+      }
+    },
+    "sscs_compliance": {
+      "type": "object",
+      "description": "Semantic Seed Coding Standards compliance flags",
+      "properties": {
+        "story_type": {
+          "type": "string",
+          "description": "Type of story being worked on",
+          "enum": ["feature", "bug", "chore"]
+        },
+        "tdd_phase": {
+          "type": "string",
+          "description": "Current TDD phase",
+          "enum": ["red", "green", "refactor"]
+        },
+        "workflow_step": {
+          "type": "string",
+          "description": "Current workflow step in the SSCS process"
+        }
+      }
+    }
+  }
+}
